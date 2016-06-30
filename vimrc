@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -27,8 +26,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'tpope/vim-sleuth'
-"Plugin 'bling/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'majutsushi/tagbar'
 "Plugin 'vim-scripts/DoxygenToolkit.vim'
@@ -63,22 +63,20 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
-" open ctag in vertical split
-":noremap <Enter> :vsp <CR>:exec("tag ".expand("<cword>"))<CR> :wincmd x
-" <Enter> :wincmd w <Enter>
-" " open ctag in new tab
-":noremap <C-@> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-"
-"go to the next/previous tag
-":noremap <C-Right> :tnext <Enter>
-":noremap <C-Left> :tprevious <Enter>
+"airline configuration'
+set laststatus=2   " Always show the statusline
+let g:airline_powerline_fonts=1
+let g:airline_theme='murmur'
+set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 :set mouse=a
 :set number
 syntax enable
-colorscheme monokai
+colorscheme stereokai
 set colorcolumn=120
-
+set directory=~/.vim/backup
+set backupdir=~/.vim/backup   " keep swap files here
+set fillchars+=stl:\ ,stlnc:\
 
 map <C-Down> :bprevious<CR>
 map <C-Up> :bnext<CR>
