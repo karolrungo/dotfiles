@@ -23,6 +23,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'tpope/vim-sleuth'
@@ -58,7 +59,8 @@ let NERDTreeMapOpenInTab='<ENTER>'
 "CtrlPConfiguration
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode ='ra'
+let g:ctrlp_regexp = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
@@ -71,6 +73,7 @@ set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in
 
 :set mouse=a
 :set number
+:set nowrap
 syntax enable
 colorscheme stereokai
 set colorcolumn=120
