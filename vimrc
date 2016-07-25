@@ -54,7 +54,7 @@ filetype plugin indent on    " required
 "NERDTree configuration
 autocmd vimenter * NERDTree
 map <F4> :NERDTreeToggle<CR>
-let NERDTreeMapOpenInTab='<ENTER>'
+"let NERDTreeMapOpenInTab='<ENTER>'
 
 "CtrlPConfiguration
 let g:ctrlp_map = '<c-p>'
@@ -71,9 +71,10 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='murmur'
 set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
-:set mouse=a
-:set number
-:set nowrap
+set mouse=a
+set mousemodel=extend "shift + click for searching
+set number
+set nowrap
 syntax enable
 colorscheme stereokai
 set colorcolumn=120
@@ -81,9 +82,19 @@ set directory=~/.vim/backup
 set backupdir=~/.vim/backup   " keep swap files here
 set fillchars+=stl:\ ,stlnc:\
 set tabstop=4
+set guitablabel=%t "show only filename in tab
 
 map <C-Down> :bprevious<CR>
 map <C-Up> :bnext<CR>
+
+set clipboard+=unnamed  " use the clipboards of vim and win
+set paste               " Paste from a windows or from vim
+set go+=a               " Visual selection automatically copied to the clipboard
+" copy and paste
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
 
 "functions for saving actual vim session
 function! MakeSession()
