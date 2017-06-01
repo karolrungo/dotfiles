@@ -11,6 +11,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'terryma/vim-multiple-cursors'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +55,7 @@ set pastetoggle=<F2> " F2 activates paste mode
 set hidden
 nmap <C-PageUp> :bnext<CR>
 nmap <C-PageDown> :bprevious<CR>
-nmap <leader>bl :ls<CR> > " Show all open buffers and their status
+set mouse=a
 
 " ctrlp configuration
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -66,3 +69,20 @@ let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
+
+" Multiple cursors
+let g:multi_cursor_start_key='<F5>'
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_quit_key='<Esc>'
+
+"CtrlSF
+nmap <C-S-f> :CtrlSF 
+
+" Multiple cursors
+let g:multi_cursor_start_key='<F5>'
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_quit_key='<Esc>'
