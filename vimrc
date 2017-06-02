@@ -16,6 +16,8 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'thaerkh/vim-workspace'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -30,12 +32,18 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+"colorsheme
 colorscheme Monokai
+syntax enable
+set t_Co=256
+
 set number
 set nowrap
 set autoread
 set tabstop=4       " a tab is four spaces
 set shiftwidth=4    " number of spaces to use for autoindenting
+set softtabstop=4   " let backspace delete indent
 set expandtab       " replace tab with spaces
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
@@ -48,16 +56,20 @@ set incsearch       " show search matches as you type
 set history=1000    " remember more commands and search history
 set undolevels=1000 " use many levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
-set title           " change the terminal's title
 set nobackup        " do not keep backup files
 set noswapfile      " do not keep swp files
 set list            " show whitespaces
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set pastetoggle=<F2> " F2 activates paste mode
-set hidden
-nmap <C-PageUp> :bnext<CR>
-nmap <C-PageDown> :bprevious<CR>
+set hidden          " unsaved buffers can be not active
+set colorcolumn=120 " max line lenght
+map <C-j> :bprevious<CR>
+map <C-k> :bnext<CR>
 set mouse=a
+set wildmenu
+set wildmode=list:longest,full
+set whichwrap=b,s,h,l,<,>,[,]
+set foldenable
 
 " ctrlp configuration
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -90,16 +102,12 @@ let g:multi_cursor_skip_key='<C-k>'
 let g:multi_cursor_quit_key='<Esc>'
 
 "NerdTREE
-map <C-t> :NERDTree .<CR>
+map <F3> :NERDTreeToggle .<CR>
 
-" Disable Arrow keys in Escape mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+"workspace
+let g:workspace_session_name = 'Session.vim'
+let g:workspace_autosave_always = 1
+let g:workspace_autosave_untrailspaces = 0
 
-" Disable Arrow keys in Insert mode
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+"create ctags command
+command! Ctags execute "!ctags -R --tag-relative=yes --exclude=\".git|build\" -f tags"
