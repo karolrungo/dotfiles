@@ -54,7 +54,6 @@ set smarttab        " insert tabs on the start of a line according to shiftwidth
 set hlsearch        " highlight search terms
 set incsearch       " show search matches as you type
 set history=1000    " remember more commands and search history
-set undolevels=1000 " use many levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set nobackup        " do not keep backup files
 set noswapfile      " do not keep swp files
@@ -70,12 +69,16 @@ set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
+" Setup persistent undo
+set undofile
+set undodir=~/.vim/undodir
 
 " ctrlp configuration
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
-"let g:ctrlp_open_new_file = 't'
 
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
