@@ -70,8 +70,8 @@ set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
 " Setup persistent undo
-set undofile
-set undodir=~/.vim/undodir
+let g:workspace_persist_undo_history = 1  " enabled = 1 (default), disabled = 0
+let g:workspace_undodir='~/.vim/undodir/'
 
 " ctrlp configuration
 let g:ctrlp_user_command = 'find %s -type f'
