@@ -34,7 +34,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "colorsheme
-colorscheme Monokai
+colorscheme molokai_dark
 syntax enable
 set t_Co=256
 
