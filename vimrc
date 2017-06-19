@@ -17,7 +17,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'thaerkh/vim-workspace'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc' "vim-session dependency
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -87,13 +88,6 @@ let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 
-" Multiple cursors
-let g:multi_cursor_start_key='<F5>'
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-k>'
-let g:multi_cursor_quit_key='<Esc>'
-
 "CtrlSF
 nmap <C-S-f> :CtrlSF 
 
@@ -107,10 +101,9 @@ let g:multi_cursor_quit_key='<Esc>'
 "NerdTREE
 map <F3> :NERDTreeToggle .<CR>
 
-"workspace
-let g:workspace_session_name = 'Session.vim'
-let g:workspace_autosave_always = 1
-let g:workspace_autosave_untrailspaces = 0
+"session
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
 
 "create ctags command
 command! Ctags execute "!ctags -R --tag-relative=yes --exclude=\".git|build\" -f tags"
