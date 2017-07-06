@@ -39,6 +39,7 @@ colorscheme molokai_dark
 syntax enable
 set t_Co=256
 
+set shell=bash
 set number
 set nowrap
 set autoread
@@ -107,4 +108,4 @@ let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
 "create ctags command
-command! Ctags execute "!ctags -R --tag-relative=yes --exclude=\".git|build\" -f tags"
+command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E_External,T_Tools,I_Interface} -f tags"
