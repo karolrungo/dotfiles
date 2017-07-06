@@ -19,6 +19,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc' "vim-session dependency
+Plugin 'octol/vim-cpp-enhanced-highlight'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -71,6 +72,7 @@ set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
+set cursorline
 " Setup persistent undo
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 
