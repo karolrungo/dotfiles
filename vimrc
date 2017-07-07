@@ -12,7 +12,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
@@ -21,6 +20,7 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'majutsushi/tagbar'
+Plugin 'gabesoft/vim-ags'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -74,6 +74,7 @@ set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
 set cursorline
+
 " Setup persistent undo
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 
@@ -91,9 +92,10 @@ let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
+set timeoutlen=10
 
-"CtrlSF
-nmap <C-S-f> :CtrlSF 
+"Ags
+nmap <C-S-f> :Ags 
 
 " Multiple cursors
 let g:multi_cursor_use_default_mapping=0
