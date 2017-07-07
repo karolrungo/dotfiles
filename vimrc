@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'majutsushi/tagbar'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -111,3 +112,6 @@ let g:session_autoload = 'yes'
 
 "create ctags command
 command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E_External,T_Tools,I_Interface} -f tags"
+
+"tagbar configuration
+nmap <F8> :TagbarToggle<CR>
