@@ -79,12 +79,13 @@ set cursorline
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 
 " ctrlp configuration
-let g:ctrlp_user_command = 'find %s -type f'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|lteDo$'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_cmd='CtrlP :pwd'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=10
 
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
@@ -92,7 +93,6 @@ let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
-set timeoutlen=10
 
 "Ags
 nmap <C-S-f> :Ags 
