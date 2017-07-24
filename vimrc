@@ -21,6 +21,7 @@ Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags'
+Plugin 'easymotion/vim-easymotion'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -74,6 +75,7 @@ set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
 set cursorline
+let bclose_multiple = 0
 
 " Setup persistent undo
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
