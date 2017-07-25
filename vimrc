@@ -22,6 +22,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'mhinz/vim-startify'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -53,6 +54,7 @@ set expandtab       " replace tab with spaces
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
 set showmatch       " set show matching parenthesis
+hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
@@ -119,3 +121,6 @@ command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E
 
 "tagbar configuration
 nmap <F8> :TagbarToggle<CR>
+
+"startify configuration
+let g:startify_session_dir = '~/.vim/sessions'
