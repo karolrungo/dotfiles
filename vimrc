@@ -23,6 +23,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify'
+Plugin 'Valloric/YouCompleteMe'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,6 +78,7 @@ set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set foldenable
 set cursorline
+set clipboard=unnamedplus
 let bclose_multiple = 0
 
 " Setup persistent undo
