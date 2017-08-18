@@ -24,6 +24,7 @@ Plugin 'gabesoft/vim-ags'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/Mark--Karkat'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -69,7 +70,6 @@ set list            " show whitespaces
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set pastetoggle=<F2> " F2 activates paste mode
 set hidden          " unsaved buffers can be not active
-set colorcolumn=120 " max line lenght
 map <C-j> :bprevious<CR>
 map <C-k> :bnext<CR>
 set mouse=a
@@ -80,6 +80,7 @@ set foldenable
 set cursorline
 set clipboard=unnamedplus
 let bclose_multiple = 0
+set colorcolumn=120 " max line lenght
 
 " Setup persistent undo
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
