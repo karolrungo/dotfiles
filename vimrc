@@ -25,6 +25,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/Mark--Karkat'
+Plugin 'tpope/vim-surround'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
