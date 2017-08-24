@@ -83,6 +83,7 @@ set cursorline
 set clipboard=unnamedplus
 let bclose_multiple = 0
 set colorcolumn=120 " max line lenght
+map <leader>a "_
 
 " Setup persistent undo
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
