@@ -83,6 +83,7 @@ set cursorline
 set clipboard=unnamedplus
 let bclose_multiple = 0
 set colorcolumn=120 " max line lenght
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 map <leader>a "_
 
 " Setup persistent undo
