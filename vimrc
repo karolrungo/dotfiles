@@ -23,7 +23,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/Mark--Karkat'
 Plugin 'tpope/vim-surround'
 Plugin 'qpkorr/vim-bufkill'
@@ -78,7 +78,6 @@ set mouse=a
 set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
-set foldenable
 set cursorline
 set clipboard=unnamedplus
 let bclose_multiple = 0
@@ -105,9 +104,6 @@ let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 
-"Ags
-nmap <C-S-f> :Ags 
-
 " Multiple cursors
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_start_key='<F6>'
@@ -131,3 +127,10 @@ nmap <F8> :TagbarToggle<CR>
 
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
+
+"folding
+set nofoldenable
+set foldmethod=syntax
+set foldlevel=10
+set foldlevel
+nmap <Space> za
