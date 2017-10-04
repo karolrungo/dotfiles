@@ -85,6 +85,11 @@ set colorcolumn=120 " max line lenght
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 map <leader>a "_
 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " Setup persistent undo
 let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
 
@@ -132,5 +137,4 @@ let g:startify_session_dir = '~/.vim/sessions'
 set nofoldenable
 set foldmethod=syntax
 set foldlevel=10
-set foldlevel
 nmap <Space> za
