@@ -27,6 +27,7 @@ Plugin 'mhinz/vim-startify'
 Plugin 'vim-scripts/Mark--Karkat'
 Plugin 'tpope/vim-surround'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'a.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -84,6 +85,8 @@ let bclose_multiple = 0
 set colorcolumn=120 " max line lenght
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 map <leader>a "_
+
+noremap <leader>q :quit<CR>
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
