@@ -27,6 +27,8 @@ Plugin 'vim-scripts/Mark--Karkat'
 Plugin 'tpope/vim-surround'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'ervandew/supertab'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'wincent/command-t'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -54,6 +56,7 @@ set autoread
 set tabstop=4       " a tab is four spaces
 set shiftwidth=4    " number of spaces to use for autoindenting
 set softtabstop=4   " let backspace delete indent
+set backspace=indent,eol,start
 set expandtab       " replace tab with spaces
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
