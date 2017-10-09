@@ -35,6 +35,10 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'schickling/vim-bufonly'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'jeetsukumaran/vim-buffergator'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -55,6 +59,7 @@ colorscheme molokai_dark
 syntax enable
 set t_Co=256
 
+set encoding=utf8
 set shell=bash
 set number
 set nowrap
@@ -187,3 +192,4 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ada_remove_include_errors = 1
 let g:syntastic_cpp_checkers=['']
 let g:syntastic_loc_list_height=5
+
