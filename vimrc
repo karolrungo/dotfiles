@@ -29,6 +29,12 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'wincent/command-t'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'Yggdroot/indentLine'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'schickling/vim-bufonly'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,6 +112,7 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_cmd='CtrlP :pwd'
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=10
+let g:ctrlp_clear_cache_on_exit = 0
 
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
@@ -153,8 +160,8 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
@@ -167,3 +174,16 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ada_remove_include_errors = 1
+let g:syntastic_cpp_checkers=['']
+let g:syntastic_loc_list_height=5
