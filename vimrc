@@ -28,17 +28,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/MatchTagAlways'
-Plugin 'wincent/command-t'
-Plugin 'dyng/ctrlsf.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'wesQ3/vim-windowswap'
 Plugin 'schickling/vim-bufonly'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'vim-scripts/mru.vim'
+Plugin 'dkprice/vim-easygrep'
+"Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -98,6 +98,11 @@ let bclose_multiple = 0
 set colorcolumn=120 " max line lenght
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 map <leader>a "_
+"folding
+set nofoldenable
+set foldmethod=syntax
+set foldlevel=10
+nmap <Space> za
 
 noremap <leader>q :quit<CR>
 
@@ -150,11 +155,6 @@ nmap <F8> :TagbarToggle<CR>
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
 
-"folding
-set nofoldenable
-set foldmethod=syntax
-set foldlevel=10
-nmap <Space> za
 
 "EASYMOTION
 " <Leader>f{char} to move to {char}
@@ -192,4 +192,14 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ada_remove_include_errors = 1
 let g:syntastic_cpp_checkers=['']
 let g:syntastic_loc_list_height=5
+
+set splitright
+set splitbelow
+
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <S-k> <C-w>k
+nnoremap <S-l> <C-w>l
+
+let g:ags_winheight = 10
 
