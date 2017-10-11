@@ -12,9 +12,9 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc' "vim-session dependency
@@ -25,19 +25,16 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify'
 Plugin 'vim-scripts/Mark--Karkat'
 Plugin 'tpope/vim-surround'
-Plugin 'qpkorr/vim-bufkill'
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'schickling/vim-bufonly'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'qpkorr/vim-bufkill'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-scripts/mru.vim'
-Plugin 'dkprice/vim-easygrep'
+Plugin 'djoshea/vim-autoread'
 "Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,16 +55,14 @@ filetype plugin indent on    " required
 colorscheme molokai_dark
 syntax enable
 set t_Co=256
-
 set encoding=utf8
 set shell=bash
-set number
-set nowrap
-set autoread
-set tabstop=4       " a tab is four spaces
-set shiftwidth=4    " number of spaces to use for autoindenting
-set softtabstop=4   " let backspace delete indent
-set backspace=indent,eol,start
+set nowrap          "do not wrap lines
+set autoread        "autoreload file (works in GUI only)
+set tabstop=4       "a tab is four spaces
+set shiftwidth=4    "number of spaces to use for autoindenting
+set softtabstop=4
+set backspace=indent,eol,start "let backspace delete indent
 set expandtab       " replace tab with spaces
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
@@ -86,35 +81,52 @@ set list            " show whitespaces
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set pastetoggle=<F2> " F2 activates paste mode
 set hidden          " unsaved buffers can be not active
-map <C-j> :bprevious<CR>
-map <C-k> :bnext<CR>
 set mouse=a
 set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set cursorline
 set clipboard=unnamedplus
-let bclose_multiple = 0
 set colorcolumn=120 " max line lenght
+"set line under cursor in the middle of the screen
+set scrolloff=999
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
-map <leader>a "_
+set splitright
+set splitbelow
 "folding
 set nofoldenable
 set foldmethod=syntax
 set foldlevel=10
 nmap <Space> za
+"display relative line numbers
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
-noremap <leader>q :quit<CR>
-
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
+"disable arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+"mapping for splits
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <S-k> <C-w>k
+nnoremap <S-l> <C-w>l
+"moving between buffers
+map <C-j> :bprevious<CR>
+map <C-k> :bnext<CR>
+"annonymous clipboard
+map <leader>a "_
 
-" Setup persistent undo
-let g:workspace_persist_undo_history = 0  " enabled = 1 (default), disabled = 0
-
-" ctrlp configuration
+"ctrlp configuration
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|lteDo$'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
@@ -131,7 +143,7 @@ let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 
-" Multiple cursors
+"multiple cursor configuration
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_start_key='<F6>'
 let g:multi_cursor_next_key='<C-n>'
@@ -139,10 +151,10 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-"NerdTREE
+"NerdTREE configuration
 map <F3> :NERDTreeToggle .<CR>
 
-"session
+"vim-session configuration
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
@@ -155,36 +167,19 @@ nmap <F8> :TagbarToggle<CR>
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
 
-
-"EASYMOTION
-" <Leader>f{char} to move to {char}
+"easymotion configuration
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
 nmap <Leader>s <Plug>(easymotion-overwin-f2)
-
-" Move to line
 map <Leader>l <Plug>(easymotion-bd-jk)
 nmap <Leader>l <Plug>(easymotion-overwin-line)
-
-" Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-:set number relativenumber
-
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
 
 " Syntastic configuration
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -193,13 +188,9 @@ let g:syntastic_ada_remove_include_errors = 1
 let g:syntastic_cpp_checkers=['']
 let g:syntastic_loc_list_height=5
 
-set splitright
-set splitbelow
-
-nnoremap <S-h> <C-w>h
-nnoremap <S-j> <C-w>j
-nnoremap <S-k> <C-w>k
-nnoremap <S-l> <C-w>l
-
+"Ags configuration
 let g:ags_winheight = 10
+
+"blose configuration
+let bclose_multiple = 0
 
