@@ -117,11 +117,6 @@ command! WQ wq
 command! Wq wq
 command! W w
 command! Q q
-"disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 "mapping for splits
 nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
