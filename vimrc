@@ -36,6 +36,10 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'djoshea/vim-autoread'
 Plugin 'morhetz/gruvbox'
+Plugin 'Raimondi/delimitMate'
+Plugin 'alvan/vim-closetag'
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/yajs.vim', { 'for': 'javascript' }
 "Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -197,3 +201,10 @@ let g:ags_winheight = 10
 "blose configuration
 let bclose_multiple = 0
 
+"fix delimitMate and closeTag conflict
+let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
+au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
