@@ -35,6 +35,7 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'djoshea/vim-autoread'
+Plugin 'morhetz/gruvbox'
 "Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,7 +53,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "colorsheme
-colorscheme molokai_dark
+"colorscheme molokai_dark
+colorscheme gruvbox
+set background=dark    " Setting dark mode
 syntax enable
 set t_Co=256
 set encoding=utf8
@@ -139,7 +142,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
-let g:airline_theme='simple'
+let g:airline_theme='gruvbox'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 
