@@ -40,6 +40,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'alvan/vim-closetag'
 Plugin 'mattn/emmet-vim'
 Plugin 'othree/yajs.vim', { 'for': 'javascript' }
+Plugin 'a.vim'
+Plugin 'posva/vim-vue'
 "Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,7 +98,7 @@ set cursorline
 set clipboard=unnamedplus
 set colorcolumn=120 " max line lenght
 "set line under cursor in the middle of the screen
-set scrolloff=999
+set scrolloff=0
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 set splitright
 set splitbelow
