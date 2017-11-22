@@ -42,6 +42,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'othree/yajs.vim', { 'for': 'javascript' }
 Plugin 'a.vim'
 Plugin 'posva/vim-vue'
+Plugin 'Ioannis-Kapoulas/vim-autoprefixer'
+Plugin 'gko/vim-coloresque'
 "Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -205,3 +207,5 @@ au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],
 augroup javascript_folding
     au!
     au FileType javascript setlocal foldmethod=syntax
+
+autocmd FileType vue syntax sync fromstart
