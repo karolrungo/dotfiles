@@ -44,6 +44,7 @@ Plugin 'a.vim'
 Plugin 'posva/vim-vue'
 Plugin 'Ioannis-Kapoulas/vim-autoprefixer'
 Plugin 'gko/vim-coloresque'
+Plugin 'lordm/vim-browser-reload-linux'
 "Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
