@@ -104,7 +104,7 @@ set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set cursorline
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 set colorcolumn=120 " max line lenght
 "set line under cursor in the middle of the screen
 set scrolloff=0
@@ -183,6 +183,7 @@ command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E
 
 "tagbar configuration
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
@@ -203,10 +204,15 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ada_remove_include_errors = 1
 let g:syntastic_cpp_checkers=['']
 let g:syntastic_loc_list_height=5
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
 
 "Ags configuration
 let g:ags_winheight = 10
@@ -273,3 +279,22 @@ nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
+
+"A.vim cofiguration
+let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,sfr:../Include,sfr:../Source'
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+" c
+autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+
+
+" html
+" for html files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
+
+" javascript
+let g:javascript_enable_domhtmlcss = 1
