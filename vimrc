@@ -14,8 +14,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
+"Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/grep.vim'
+Plugin 'tpope/vim-commentary'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -68,6 +71,9 @@ set background=dark    " Setting dark mode
 syntax enable
 set t_Co=256
 set encoding=utf8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set binary
 set shell=bash
 set nowrap          "do not wrap lines
 set autoread        "autoreload file (works in GUI only)
@@ -109,6 +115,7 @@ set splitbelow
 set nofoldenable
 set foldmethod=syntax
 set foldlevel=10
+set ruler
 nmap <Space> za
 "display relative line numbers
 set number relativenumber
@@ -118,10 +125,16 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-command! WQ wq
-command! Wq wq
-command! W w
-command! Q q
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
 "mapping for splits
 nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
@@ -210,3 +223,53 @@ augroup javascript_folding
     au FileType javascript setlocal foldmethod=syntax
 
 autocmd FileType vue syntax sync fromstart
+
+" vim-airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+if !exists('g:airline_powerline_fonts')
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_left_sep          = '▶'
+  let g:airline_left_alt_sep      = '»'
+  let g:airline_right_sep         = '◀'
+  let g:airline_right_alt_sep     = '«'
+  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+  let g:airline#extensions#readonly#symbol   = '⊘'
+  let g:airline#extensions#linecolumn#prefix = '¶'
+  let g:airline#extensions#paste#symbol      = 'ρ'
+  let g:airline_symbols.linenr    = '␊'
+  let g:airline_symbols.branch    = '⎇'
+  let g:airline_symbols.paste     = 'ρ'
+  let g:airline_symbols.paste     = 'Þ'
+  let g:airline_symbols.paste     = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+else
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+endif
+
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+
+" IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '┆'
+let g:indentLine_faster = 1
+
+" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+let Grep_Default_Options = '-IR'
+let Grep_Skip_Files = '*.log *.db'
+let Grep_Skip_Dirs = '.git node_modules'
