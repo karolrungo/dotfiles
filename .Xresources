@@ -1,0 +1,54 @@
+URxvt*font:                 xft:Meslo LG L DZ for Powerline:regular:size=10:antialias=true
+URxvt*imFont:               xft:Meslo LG L DZ for Powerline:regular:size=10:antialias=true
+URxvt*boldFont:             xft:Meslo LG L DZ for Powerline:bold:size=10:antialias=true
+URxvt*italicFont:           xft:Meslo LG L DZ for Powerline:italic:size=10:antialias=true
+URxvt*boldItalicFont:       xft:Meslo LG L DZ for Powerline:bold:italic:size=10:antialias=true
+
+URxvt.scrollBar: false
+URxvt.scrollstyle: plain
+URxvt.scrollBar_right: true
+
+URxvt.background: #101b2a
+URxvt.foreground: #dcdccc
+
+
+
+URxvt.termName: rxvt-256color
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+URxvt.transparent:   true
+URxvt.tintColor:     white
+URxvt.shading:       40
+
+URxvt.loginShell:           true
+URxvt*scrollTtyKeypress:  true
+URxvt*scrollTtyOutput:  false
+URxvt*scrollWithBuffer:  false
+
+URxvt*fading:  30
+URxvt*saveLines:  1000
+
+! Perl extensions
+URxvt.perl-ext-common: default,matcher,tabbed,fullscreen,clipboard,resize-font
+
+! MATCHER
+URxvt.url-launcher: firefox
+URxvt.matcher.button: 1
+
+! CLIPBOARD
+URxvt.copyCommand:  xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+
+! TABBED
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+
+! FULLSCREEN
+URxvt.keysym.F11: perl:fullscreen:switch
