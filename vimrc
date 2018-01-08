@@ -290,9 +290,9 @@ autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 
-" html
+" webdev
 " for html files, 2 spaces
-autocmd Filetype html setlocal ts=2 sw=2 expandtab foldmethod=indent
+autocmd Filetype html,css,scss,sass setlocal ts=2 sw=2 expandtab foldmethod=indent
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
