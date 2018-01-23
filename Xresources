@@ -26,12 +26,9 @@ URxvt.tintColor:     white
 URxvt.shading:       40
 
 URxvt.loginShell:           true
-URxvt*scrollTtyKeypress:  true
-URxvt*scrollTtyOutput:  false
-URxvt*scrollWithBuffer:  false
 
 URxvt*fading:  30
-URxvt*saveLines:  1000
+URxvt*saveLines:  100000
 
 ! Perl extensions
 URxvt.perl-ext-common: default,matcher,tabbed,fullscreen,clipboard,resize-font
@@ -50,3 +47,9 @@ URxvt.tabbed.tabbar-bg: 0
 
 ! FULLSCREEN
 URxvt.keysym.F11: perl:fullscreen:switch
+
+! Stay focused on a particular part of scrollback buffer when scrolled up from the bottom
+rxvt.scrollTtyOutput:   false
+rxvt.scrollWithBuffer:  false
+rxvt.scrollTtyKeypress: true
+
