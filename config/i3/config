@@ -189,7 +189,7 @@ bindsym $mod+shift+x exec ~/lockme.sh
 
 # start dmenu (a program launcher)
 # There also is the (new) i3-dmenu-desktop which only displays applications
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
+bindsym $mod+d exec rofi -show run -modi run  1
 
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -205,3 +205,6 @@ exec_always feh --bg-scale  /home/rungo/Wallpapers/arch-linux-wallpaper.png
 
 exec /usr/bin/VBoxClient-all
 
+gaps inner 10
+gaps outer 0
+smart_gaps on
