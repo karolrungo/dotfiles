@@ -47,7 +47,11 @@ Plugin 'posva/vim-vue'
 Plugin 'Ioannis-Kapoulas/vim-autoprefixer'
 Plugin 'gko/vim-coloresque'
 Plugin 'lordm/vim-browser-reload-linux'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'othree/html5.vim'
 "Plugin 'mileszs/ack.vim'
+Plugin 'gustafj/vim-ttcn'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -292,7 +296,7 @@ autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 " webdev
 " for html files, 2 spaces
-autocmd Filetype html,css,scss,sass setlocal ts=2 sw=2 expandtab foldmethod=indent
+autocmd Filetype html,css,scss,sass,js,pug setlocal ts=2 sw=2 expandtab foldmethod=indent
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
