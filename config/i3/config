@@ -31,9 +31,9 @@ font pango:Meslo LG M DZ for Powerline,10
 floating_modifier $mod
 
 # start a terminal
-#set $terminal xfce4-terminal
-set $terminal urxvt
-bindsym $mod+Return exec $terminal
+set $terminal xfce4-terminal
+#set $terminal urxvt
+bindsym $mod+Return exec $terminal 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -88,41 +88,43 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Vim  "
-set $workspace2 "2: Terminals  "
-set $workspace3 "3: Web Browser  "
-set $workspace4 "4: Mail  "
-set $workspace5 "5: Files  "
-
-workspace $workspace1 output VGA-1
-workspace $workspace2 output VGA-1
-workspace $workspace3 output VGA-2
-workspace $workspace4 output VGA-2
-workspace $workspace5 output VGA-1
+set $ws1 "1: Vim"
+set $ws2 "2: Terminals"
+set $ws3 "3: Web Browser"
+set $ws4 "4"
+set $ws5 "5: Files"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9: Spotify"
+set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1      workspace $ws1
+bindsym $mod+2      workspace $ws2
+bindsym $mod+3      workspace $ws3
+bindsym $mod+4      workspace $ws4
+bindsym $mod+5      workspace $ws5
+bindsym $mod+6      workspace $ws6
+bindsym $mod+7      workspace $ws7
+bindsym $mod+8      workspace $ws8
+bindsym $mod+9      workspace $ws9
+bindsym $mod+0      workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1	move container to workspace $ws1
+bindsym $mod+Shift+2	move container to workspace $ws2
+bindsym $mod+Shift+3	move container to workspace $ws3
+bindsym $mod+Shift+4	move container to workspace $ws4
+bindsym $mod+Shift+5	move container to workspace $ws5
+bindsym $mod+Shift+6	move container to workspace $ws6
+bindsym $mod+Shift+7	move container to workspace $ws7
+bindsym $mod+Shift+8	move container to workspace $ws8
+bindsym $mod+Shift+9	move container to workspace $ws9
+bindsym $mod+Shift+0	move container to workspace $ws10
+
+for_window [class="Firefox"] move workspace $ws3
+for_window [class="Spotify"] move to workspace $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -201,10 +203,29 @@ exec --no-startup-id compton -f
 # exec --no-startup-id i3-msg 'workspace $workspace1; exec $terminal -e vim'
 # exec --no-startup-id i3-msg 'workspace $workspace2; exec $terminal'
 # exec --no-startup-id i3-msg 'workspace $workspace5; exec $terminal -e ranger'
+for_window [class="Spotify"] 9
 exec_always feh --bg-scale  /home/rungo/Wallpapers/arch-linux-wallpaper.png
 
 exec /usr/bin/VBoxClient-all
 
-gaps inner 10
-gaps outer 0
-smart_gaps on
+# gaps inner 10
+# gaps outer 0
+# smart_gaps on
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
