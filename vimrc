@@ -7,51 +7,38 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlpvim/ctrlp.vim' "file search
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-fugitive' "git commands
+Plugin 'airblade/vim-gitgutter' "shows git hunks
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/grep.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc' "vim-session dependency
+Plugin 'xolox/vim-session'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'a.vim' "switch between source and header files
 Plugin 'majutsushi/tagbar'
-Plugin 'gabesoft/vim-ags'
+Plugin 'gabesoft/vim-ags' "search tool
 Plugin 'easymotion/vim-easymotion'
-Plugin 'mhinz/vim-startify'
-Plugin 'vim-scripts/Mark--Karkat'
-Plugin 'tpope/vim-surround'
-Plugin 'ervandew/supertab'
-Plugin 'Valloric/MatchTagAlways'
+Plugin 'mhinz/vim-startify' "welcome screen
+" Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'Yggdroot/indentLine'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'schickling/vim-bufonly'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'vim-scripts/mru.vim'
-Plugin 'djoshea/vim-autoread'
-Plugin 'morhetz/gruvbox'
-Plugin 'Raimondi/delimitMate'
-Plugin 'alvan/vim-closetag'
+Plugin 'Yggdroot/indentLine' "shows indents in code
+Plugin 'vim-syntastic/syntastic' "check syntax
+Plugin 'schickling/vim-bufonly' "delete allbuffers except current
+Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
+Plugin 'jeetsukumaran/vim-buffergator' "list of open buffers
+Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
+Plugin 'alvan/vim-closetag' "close html tags
+Plugin 'Valloric/MatchTagAlways' "match html tags
 Plugin 'mattn/emmet-vim'
-Plugin 'othree/yajs.vim', { 'for': 'javascript' }
-Plugin 'a.vim'
-Plugin 'posva/vim-vue'
-Plugin 'Ioannis-Kapoulas/vim-autoprefixer'
-Plugin 'gko/vim-coloresque'
-Plugin 'lordm/vim-browser-reload-linux'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'othree/html5.vim'
-"Plugin 'mileszs/ack.vim'
+Plugin 'othree/yajs.vim' "javascript support
 Plugin 'gustafj/vim-ttcn'
+Plugin 'tpope/vim-sleuth' "heuristic shiftwidth and expandtab
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,31 +54,28 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-"colorsheme
-"colorscheme molokai_dark
-colorscheme gruvbox
-set background=dark    " Setting dark mode
 syntax enable
 set t_Co=256
+colorscheme molokai_dark
+
 set encoding=utf8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set binary
 set shell=bash
 set nowrap          "do not wrap lines
 set autoread        "autoreload file (works in GUI only)
-set tabstop=4       "a tab is four spaces
-set shiftwidth=4    "number of spaces to use for autoindenting
-set softtabstop=4
+" set tabstop=4       "a tab is four spaces
+" set shiftwidth=4    "number of spaces to use for autoindenting
+" set softtabstop=4
+" set expandtab       " replace tab with spaces
+" set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
 set backspace=indent,eol,start "let backspace delete indent
-set expandtab       " replace tab with spaces
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
 set showmatch       " set show matching parenthesis
 hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
 set hlsearch        " highlight search terms
 set incsearch       " show search matches as you type
 set history=1000    " remember more commands and search history
@@ -120,13 +104,7 @@ set foldmethod=syntax
 set foldlevel=10
 set ruler
 nmap <Space> za
-"display relative line numbers
-set number relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+set number
 
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -149,6 +127,7 @@ map <C-k> :bnext<CR>
 "annonymous clipboard
 map <leader>a "_
 
+
 "ctrlp configuration
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|lteDo$'
@@ -163,7 +142,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
-let g:airline_theme='gruvbox'
+let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 
@@ -176,7 +155,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 "NerdTREE configuration
-map <F3> :NERDTreeToggle .<CR>
+map <F3> :NERDTreeToggle <CR>
 
 "vim-session configuration
 let g:session_autosave = 'yes'
@@ -205,18 +184,13 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_ada_remove_include_errors = 1
-let g:syntastic_cpp_checkers=['']
 let g:syntastic_loc_list_height=5
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_cpp_checkers = []
 
 "Ags configuration
 let g:ags_winheight = 10
@@ -228,76 +202,17 @@ let bclose_multiple = 0
 let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
 au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-
-autocmd FileType vue syntax sync fromstart
-
-" vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
-
-autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-
 " IndentLine
 let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = 0
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
-" grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
-let Grep_Default_Options = '-IR'
-let Grep_Skip_Files = '*.log *.db'
-let Grep_Skip_Dirs = '.git node_modules'
-
 "A.vim cofiguration
 let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,sfr:../Include,sfr:../Source'
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
-
-" c
-autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
-
-
-" webdev
-" for html files, 2 spaces
-autocmd Filetype html,css,scss,sass,js,pug setlocal ts=2 sw=2 expandtab foldmethod=indent
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
