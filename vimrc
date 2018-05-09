@@ -25,7 +25,7 @@ Plugin 'gabesoft/vim-ags' "search tool
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify' "welcome screen
 " Plugin 'ervandew/supertab'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
 Plugin 'vim-syntastic/syntastic' "check syntax
@@ -39,6 +39,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'othree/yajs.vim' "javascript support
 Plugin 'gustafj/vim-ttcn'
 Plugin 'tpope/vim-sleuth' "heuristic shiftwidth and expandtab
+Plugin 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
