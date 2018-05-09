@@ -18,7 +18,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'xolox/vim-session'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'a.vim' "switch between source and header files
 Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags' "search tool
@@ -36,10 +36,12 @@ Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
 Plugin 'alvan/vim-closetag' "close html tags
 Plugin 'Valloric/MatchTagAlways' "match html tags
 Plugin 'mattn/emmet-vim'
-Plugin 'othree/yajs.vim' "javascript support
+"Plugin 'othree/yajs.vim' "javascript support
+"Plugin 'othree/html5.vim' "html5 support
 Plugin 'gustafj/vim-ttcn'
 Plugin 'tpope/vim-sleuth' "heuristic shiftwidth and expandtab
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'sheerun/vim-polyglot'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -217,3 +219,6 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
+
+"vim polyglot graphQL bug fix
+let g:polyglot_disabled = ['graphql']
