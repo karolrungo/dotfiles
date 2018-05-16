@@ -42,6 +42,7 @@ Plugin 'gustafj/vim-ttcn'
 Plugin 'tpope/vim-sleuth' "heuristic shiftwidth and expandtab
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'gko/vim-coloresque'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -165,7 +166,7 @@ let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
 "create ctags command
-command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E_External,T_Tools,I_Interface} -f tags"
+command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E_External,T_Tools,I_Interface,node_modules} -f tags"
 
 "tagbar configuration
 nmap <F8> :TagbarToggle<CR>
@@ -222,3 +223,4 @@ let g:javascript_enable_domhtmlcss = 1
 
 "vim polyglot graphQL bug fix
 let g:polyglot_disabled = ['graphql']
+
