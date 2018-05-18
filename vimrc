@@ -135,8 +135,10 @@ map <leader>a "_
 
 
 "ctrlp configuration
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+ "Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules)$',
+  \ }
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
