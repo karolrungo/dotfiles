@@ -137,7 +137,7 @@ map <leader>a "_
 "ctrlp configuration
  "Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|lteDo|T_Tools)$',
   \ }
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
