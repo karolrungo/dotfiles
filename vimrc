@@ -43,8 +43,8 @@ Plugin 'tpope/vim-sleuth' "heuristic shiftwidth and expandtab
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'gko/vim-coloresque'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'maksimr/vim-jsbeautify'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -160,16 +160,14 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Start autocompletion after 4 chars
+" YouCompleteMe configuration
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_enable_diagnostic_highlighting = 0
-" Don't show YCM's preview window [ I find it really annoying ]
+let g:ycm_confirm_extra_conf = 0
 set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
-
-let g:ycm_show_diagnostics_ui = 0
+map <silent> gd :YcmCompleter GoToDeclaration<CR>
+map <silent> gf :YcmCompleter GoToDefinition<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
@@ -205,18 +203,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_typescript_tslint_args = ['--fix']
+let g:syntastic_cpp_checkers = []
 let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
 let g:syntastic_warning_symbol = '⚠️'
 let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-let g:syntastic_cpp_checkers = []
 
 "Ags configuration
 let g:ags_winheight = 10
@@ -246,3 +240,9 @@ let g:javascript_enable_domhtmlcss = 1
 "vim polyglot graphQL bug fix
 let g:polyglot_disabled = ['graphql']
 
+"JS beautify
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
