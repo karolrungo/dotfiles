@@ -24,7 +24,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags' "search tool
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify' "welcome screen
-"Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
@@ -39,12 +38,17 @@ Plugin 'mattn/emmet-vim'
 "Plugin 'othree/yajs.vim' "javascript support
 "Plugin 'othree/html5.vim' "html5 support
 Plugin 'gustafj/vim-ttcn'
-Plugin 'tpope/vim-sleuth' "heuristic shiftwidth and expandtab
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'gko/vim-coloresque'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'maksimr/vim-jsbeautify'
+
+Plugin 'rhysd/vim-clang-format'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'epilande/vim-react-snippets'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -70,11 +74,11 @@ set fileencodings=utf-8
 set shell=bash
 set nowrap          "do not wrap lines
 set autoread        "autoreload file (works in GUI only)
-" set tabstop=4       "a tab is four spaces
-" set shiftwidth=4    "number of spaces to use for autoindenting
-" set softtabstop=4
-" set expandtab       " replace tab with spaces
-" set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
+set tabstop=4       "a tab is four spaces
+set shiftwidth=4    "number of spaces to use for autoindenting
+set softtabstop=4
+set expandtab       " replace tab with spaces
+set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
 set backspace=indent,eol,start "let backspace delete indent
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
@@ -135,9 +139,10 @@ map <leader>a "_
 
 
 "ctrlp configuration
+"let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
  "Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|build|dist)$',
   \ }
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
@@ -173,6 +178,7 @@ map <silent> gf :YcmCompleter GoToDefinition<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
+let NERDTreeShowHidden=1
 
 "vim-session configuration
 let g:session_autosave = 'yes'
@@ -248,3 +254,6 @@ autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
 autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+let g:UltiSnipsExpandTrigger="<c-l>"
+
