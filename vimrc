@@ -18,8 +18,6 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'xolox/vim-session'
-"Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'a.vim' "switch between source and header files
 Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags' "search tool
 Plugin 'easymotion/vim-easymotion'
@@ -31,24 +29,28 @@ Plugin 'vim-syntastic/syntastic' "check syntax
 Plugin 'schickling/vim-bufonly' "delete allbuffers except current
 Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
 Plugin 'jeetsukumaran/vim-buffergator' "list of open buffers
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'sheerun/vim-polyglot'
+"WebDev
+Plugin 'ternjs/tern_for_vim'
 Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
 Plugin 'alvan/vim-closetag' "close html tags
 Plugin 'Valloric/MatchTagAlways' "match html tags
 Plugin 'mattn/emmet-vim'
 "Plugin 'othree/yajs.vim' "javascript support
 "Plugin 'othree/html5.vim' "html5 support
-Plugin 'gustafj/vim-ttcn'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'gko/vim-coloresque'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'maksimr/vim-jsbeautify'
-
-Plugin 'rhysd/vim-clang-format'
-
 Plugin 'SirVer/ultisnips'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'epilande/vim-react-snippets'
+Plugin 'gko/vim-coloresque'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
+"C++
+Plugin 'a.vim' "switch between source and header files
+Plugin 'rhysd/vim-clang-format'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'gustafj/vim-ttcn'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,7 +75,6 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set shell=bash
 set nowrap          "do not wrap lines
-set autoread        "autoreload file (works in GUI only)
 set tabstop=4       "a tab is four spaces
 set shiftwidth=4    "number of spaces to use for autoindenting
 set softtabstop=4
@@ -142,7 +143,7 @@ map <leader>a "_
 "let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
  "Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|lteDo|T_Tools|build|dist)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|build|dist)$',
   \ }
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
@@ -209,11 +210,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_typescript_tslint_args = ['--fix']
 let g:syntastic_cpp_checkers = []
 let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
