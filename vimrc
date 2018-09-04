@@ -75,9 +75,9 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set shell=bash
 set nowrap          "do not wrap lines
-set tabstop=4       "a tab is four spaces
-set shiftwidth=4    "number of spaces to use for autoindenting
-set softtabstop=4
+set tabstop=2       "a tab is four spaces
+set shiftwidth=2    "number of spaces to use for autoindenting
+set softtabstop=2
 set expandtab       " replace tab with spaces
 set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
 set backspace=indent,eol,start "let backspace delete indent
@@ -256,4 +256,10 @@ autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 let g:UltiSnipsExpandTrigger="<c-l>"
+
+"nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
 
