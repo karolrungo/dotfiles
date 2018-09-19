@@ -31,6 +31,8 @@ Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
 Plugin 'jeetsukumaran/vim-buffergator' "list of open buffers
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-expand-region'
 "WebDev
 Plugin 'ternjs/tern_for_vim'
 Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
