@@ -47,6 +47,7 @@ Plugin 'epilande/vim-react-snippets'
 Plugin 'gko/vim-coloresque'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
+Plugin 'alessioalex/syntastic-local-tslint.vim'
 "C++
 Plugin 'a.vim' "switch between source and header files
 Plugin 'rhysd/vim-clang-format'
@@ -211,8 +212,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['tslint']
@@ -221,6 +222,7 @@ let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
 let g:syntastic_warning_symbol = '⚠️'
 let g:syntastic_style_warning_symbol = '💩'
+let g:syntastic_aggregate_errors = 1
 
 "Ags configuration
 let g:ags_winheight = 10
