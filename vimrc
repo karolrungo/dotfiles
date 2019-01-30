@@ -71,7 +71,7 @@ filetype plugin indent on    " required
 
 syntax enable
 set t_Co=256
-colorscheme molokai_dark
+colorscheme molokai
 
 set encoding=utf8
 set fileencoding=utf-8
@@ -119,6 +119,7 @@ set foldlevel=10
 set ruler
 nmap <Space> za
 set number
+set modifiable
 
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -141,6 +142,13 @@ map <C-k> :bnext<CR>
 "annonymous clipboard
 map <leader>a "_
 
+if has('gui_running')
+  " set guifont=FiraCode\ 11
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
+endif
 
 "ctrlp configuration
 "let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
@@ -150,7 +158,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
-let g:ctrlp_regexp = 1
 let g:ctrlp_cmd='CtrlP :pwd'
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=10
@@ -176,6 +183,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_confirm_extra_conf = 0
+
 set completeopt-=preview
 map <silent> gd :YcmCompleter GoToDeclaration<CR>
 map <silent> gf :YcmCompleter GoToDefinition<CR>
