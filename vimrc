@@ -33,25 +33,16 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-expand-region'
+Plugin 'prettier/vim-prettier'
 "WebDev
-Plugin 'ternjs/tern_for_vim'
 Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
 Plugin 'alvan/vim-closetag' "close html tags
 Plugin 'Valloric/MatchTagAlways' "match html tags
 Plugin 'mattn/emmet-vim'
-"Plugin 'othree/yajs.vim' "javascript support
-"Plugin 'othree/html5.vim' "html5 support
-Plugin 'SirVer/ultisnips'
-Plugin 'epilande/vim-es2015-snippets'
-Plugin 'epilande/vim-react-snippets'
 Plugin 'gko/vim-coloresque'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
-Plugin 'alessioalex/syntastic-local-tslint.vim'
 "C++
 Plugin 'a.vim' "switch between source and header files
 Plugin 'rhysd/vim-clang-format'
-"Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'gustafj/vim-ttcn'
 
 " All of your Plugins must be added before the following line
@@ -143,7 +134,7 @@ map <C-k> :bnext<CR>
 map <leader>a "_
 
 if has('gui_running')
-  " set guifont=FiraCode\ 11
+  set guifont=FiraCode\ 11
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -183,10 +174,11 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_confirm_extra_conf = 0
-
 set completeopt-=preview
+" let g:ycm_error_symbol = '*'
 map <silent> gd :YcmCompleter GoToDeclaration<CR>
 map <silent> gf :YcmCompleter GoToDefinition<CR>
+map <C-i> :YcmCompleter FixIt<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
@@ -220,17 +212,24 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_args = ['--fix']
 let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_cpp_checkers = []
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-let g:syntastic_aggregate_errors = 1
+" enable autoread to reload any files from files when checktime is called and
+" the file is changed
+set autoread
+function! SyntasticCheckHook(errors)
+  checktime
+endfunction
+
+"preetier
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
 "Ags configuration
 let g:ags_winheight = 10
@@ -239,7 +238,7 @@ let g:ags_winheight = 10
 let bclose_multiple = 0
 
 "fix delimitMate and closeTag conflict
-let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
+let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx"
 au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " IndentLine
@@ -260,18 +259,6 @@ let g:javascript_enable_domhtmlcss = 1
 "vim polyglot graphQL bug fix
 let g:polyglot_disabled = ['graphql']
 
-"JS beautify
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
-
-let g:UltiSnipsExpandTrigger="<c-l>"
-
 "nerdcommenter
-" Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
-
