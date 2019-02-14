@@ -211,13 +211,13 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 0
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_args = ['--fix']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_cpp_checkers = []
 " enable autoread to reload any files from files when checktime is called and
