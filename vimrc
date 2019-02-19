@@ -25,7 +25,8 @@ Plugin 'mhinz/vim-startify' "welcome screen
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
-Plugin 'vim-syntastic/syntastic' "check syntax
+" Plugin 'vim-syntastic/syntastic' "check syntax
+Plugin 'w0rp/ale'
 Plugin 'schickling/vim-bufonly' "delete allbuffers except current
 Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
 Plugin 'jeetsukumaran/vim-buffergator' "list of open buffers
@@ -62,7 +63,8 @@ filetype plugin indent on    " required
 
 syntax enable
 set t_Co=256
-colorscheme molokai
+colorscheme gruvbox
+set background=dark
 
 set encoding=utf8
 set fileencoding=utf-8
@@ -97,7 +99,7 @@ set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
 set cursorline
 set clipboard=unnamed,unnamedplus
-set colorcolumn=120 " max line lenght
+set colorcolumn=80 " max line lenght
 "set line under cursor in the middle of the screen
 set scrolloff=0
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
@@ -145,7 +147,7 @@ endif
 "let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
  "Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|build|dist)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|build|dist|coverage|__snapshots__)$',
   \ }
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
@@ -157,7 +159,6 @@ let g:ctrlp_clear_cache_on_exit = 0
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
-let g:airline_theme='simple'
 set laststatus=2   " Always show the statusline
 let g:airline_powerline_fonts=1
 
@@ -175,10 +176,15 @@ let g:ycm_min_num_of_chars_for_completion = 4
 let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_confirm_extra_conf = 0
 set completeopt-=preview
-" let g:ycm_error_symbol = '*'
 map <silent> gd :YcmCompleter GoToDeclaration<CR>
 map <silent> gf :YcmCompleter GoToDefinition<CR>
 map <C-i> :YcmCompleter FixIt<CR>
+
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
@@ -208,28 +214,37 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_cpp_checkers = []
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_aggregate_errors = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+" let g:syntastic_typescript_checkers = ['tslint']
+" let g:syntastic_cpp_checkers = []
 " enable autoread to reload any files from files when checktime is called and
 " the file is changed
-set autoread
-function! SyntasticCheckHook(errors)
-  checktime
-endfunction
-
-"preetier
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+" set autoread
+" function! SyntasticCheckHook(errors)
+  " checktime
+" endfunction
+"
+"\
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'css': ['stylelint'],
+\   'scss': ['stylelint'],
+\}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
 "Ags configuration
 let g:ags_winheight = 10
