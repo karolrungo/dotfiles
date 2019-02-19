@@ -34,6 +34,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-expand-region'
 Plugin 'prettier/vim-prettier'
+Plugin 'tpope/vim-unimpaired'
 "WebDev
 Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
 Plugin 'alvan/vim-closetag' "close html tags
