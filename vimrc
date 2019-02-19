@@ -7,7 +7,8 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim' "file search
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
@@ -25,11 +26,9 @@ Plugin 'mhinz/vim-startify' "welcome screen
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
-" Plugin 'vim-syntastic/syntastic' "check syntax
 Plugin 'w0rp/ale'
 Plugin 'schickling/vim-bufonly' "delete allbuffers except current
 Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
-Plugin 'jeetsukumaran/vim-buffergator' "list of open buffers
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
@@ -124,14 +123,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
-"mapping for splits
-nnoremap <S-h> <C-w>h
-nnoremap <S-j> <C-w>j
-nnoremap <S-k> <C-w>k
-nnoremap <S-l> <C-w>l
-"moving between buffers
-map <C-j> :bprevious<CR>
-map <C-k> :bnext<CR>
+
 "annonymous clipboard
 map <leader>a "_
 
@@ -142,19 +134,6 @@ if has('gui_running')
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
 endif
-
-"ctrlp configuration
-"let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
- "Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules|build|dist|coverage|__snapshots__)$',
-  \ }
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_by_filename = 1
-let g:ctrlp_cmd='CtrlP :pwd'
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=10
-let g:ctrlp_clear_cache_on_exit = 0
 
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
@@ -213,27 +192,6 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-" Syntastic configuration
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_aggregate_errors = 0
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-" let g:syntastic_typescript_checkers = ['tslint']
-" let g:syntastic_cpp_checkers = []
-" enable autoread to reload any files from files when checktime is called and
-" the file is changed
-" set autoread
-" function! SyntasticCheckHook(errors)
-  " checktime
-" endfunction
-"
-"\
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'css': ['stylelint'],
@@ -277,3 +235,18 @@ let g:polyglot_disabled = ['graphql']
 "nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
