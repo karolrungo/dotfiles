@@ -21,7 +21,6 @@ Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'xolox/vim-session'
 Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags' "search tool
-Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-startify' "welcome screen
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -32,15 +31,18 @@ Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
-Plugin 'terryma/vim-expand-region'
-Plugin 'prettier/vim-prettier'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-repeat'
+Plugin 'terryma/vim-expand-region'
+Plugin 'ludovicchabant/vim-gutentags'
 "WebDev
 Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
 Plugin 'alvan/vim-closetag' "close html tags
 Plugin 'Valloric/MatchTagAlways' "match html tags
 Plugin 'mattn/emmet-vim'
 Plugin 'gko/vim-coloresque'
+Plugin 'prettier/vim-prettier'
 "C++
 Plugin 'a.vim' "switch between source and header files
 Plugin 'rhysd/vim-clang-format'
@@ -60,6 +62,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+let mapleader = ','
 
 syntax enable
 set t_Co=256
@@ -100,9 +104,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 set cursorline
 set clipboard=unnamed,unnamedplus
 set colorcolumn=80 " max line lenght
-"set line under cursor in the middle of the screen
 set scrolloff=0
-nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 set splitright
 set splitbelow
 "folding
@@ -125,6 +127,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
+
 "annonymous clipboard
 map <leader>a "_
 
@@ -135,6 +138,10 @@ if has('gui_running')
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
 endif
+
+"fzf
+nmap ; :Buffers<CR>
+nmap <Leader>t :GFiles<CR>
 
 "git-airline configuration
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
@@ -165,6 +172,8 @@ let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
+nmap ]g :GitGutterNextHunk<CR>
+nmap [g :GitGutterPrevHunk<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
@@ -174,24 +183,12 @@ let NERDTreeShowHidden=1
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 
-"create ctags command
-command! Ctags execute "!ctags -R --tag-relative=yes --exclude={.git,lteDo,ECL,E_External,T_Tools,I_Interface,node_modules} -f tags"
-
 "tagbar configuration
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
-
-"easymotion configuration
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-nmap <Leader>s <Plug>(easymotion-overwin-f2)
-map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
