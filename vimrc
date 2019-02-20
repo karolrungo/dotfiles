@@ -195,12 +195,19 @@ let g:ale_linters = {
 \   'css': ['stylelint'],
 \   'scss': ['stylelint'],
 \}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
+nmap ]w :ALENextWrap<CR>
+nmap [w :ALEPreviousWrap<CR>
+nmap <Leader>f <Plug>(ale_fix)
 
 "Ags configuration
 let g:ags_winheight = 10
