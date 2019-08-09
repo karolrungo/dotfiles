@@ -28,7 +28,6 @@ Plugin 'Yggdroot/indentLine' "shows indents in code
 Plugin 'w0rp/ale'
 Plugin 'schickling/vim-bufonly' "delete allbuffers except current
 Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -47,6 +46,7 @@ Plugin 'prettier/vim-prettier'
 Plugin 'a.vim' "switch between source and header files
 Plugin 'rhysd/vim-clang-format'
 Plugin 'gustafj/vim-ttcn'
+Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -115,6 +115,7 @@ set ruler
 nmap <Space> za
 set number
 set modifiable
+set autoread
 
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -190,8 +191,10 @@ let g:tagbar_autofocus = 1
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
 
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['stylelint', 'eslint'],
+\   'jsx': ['stylelint', 'eslint'],
 \   'css': ['stylelint'],
 \   'scss': ['stylelint'],
 \}
@@ -205,6 +208,8 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 nmap ]w :ALENextWrap<CR>
 nmap [w :ALEPreviousWrap<CR>
 nmap <Leader>f <Plug>(ale_fix)
