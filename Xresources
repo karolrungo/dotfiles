@@ -1,27 +1,25 @@
-URxvt*font:                 xft:Meslo LG L DZ for Powerline:regular:size=10:antialias=true
-URxvt*imFont:               xft:Meslo LG L DZ for Powerline:regular:size=10:antialias=true
-URxvt*boldFont:             xft:Meslo LG L DZ for Powerline:bold:size=10:antialias=true
-URxvt*italicFont:           xft:Meslo LG L DZ for Powerline:italic:size=10:antialias=true
-URxvt*boldItalicFont:       xft:Meslo LG L DZ for Powerline:bold:italic:size=10:antialias=true
-
-URxvt.scrollBar: false
-URxvt.scrollstyle: plain
-URxvt.scrollBar_right: true
-
-URxvt.background: #101b2a
-URxvt.foreground: #dcdccc
-
-
-
+!------------------
+!  URxvt Settings
+!------------------
 URxvt.termName: rxvt-256color
 
-URxvt.iso14755: false
-URxvt.iso14755_52: false
+! DISABLE ctrl-shift
+URxvt*iso14755_52: false
+URxvt*iso14755: false
 
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+! SCROLLBAR
+URxvt*scrollBar: false
+URxvt.scrollstyle: plain
+! URxvt*internalBorder: 20
 
-URxvt.transparent:   true
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 0
+
+! FONT
+URxvt*font: xft:DejaVu Sans Mono For Powerline:size=12
+URxvt*letterSpace: 0
+
+URxvt.transparent:   false
 URxvt.tintColor:     white
 URxvt.shading:       40
 
@@ -31,25 +29,55 @@ URxvt*fading:  30
 URxvt*saveLines:  100000
 
 ! Perl extensions
-URxvt.perl-ext-common: default,matcher,tabbed,fullscreen,clipboard,resize-font
+URxvt.perl-ext-common: default,matcher,fullscreen,resize-font
 
 ! MATCHER
-URxvt.url-launcher: firefox
+URxvt.url-launcher: google-chrome-stable
 URxvt.matcher.button: 1
 
 ! CLIPBOARD
-URxvt.copyCommand:  xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-
-! TABBED
-URxvt.tabbed.tabbar-fg: 2
-URxvt.tabbed.tabbar-bg: 0
+URxvt.clipboard.autocopy: true
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
 
 ! FULLSCREEN
 URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Stay focused on a particular part of scrollback buffer when scrolled up from the bottom
-rxvt.scrollTtyOutput:   false
-rxvt.scrollWithBuffer:  false
-rxvt.scrollTtyKeypress: true
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
+URxvt.scrollTtyKeypress: true
+!to check end
 
+! GRUBVOX COLORTHEME
+
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
