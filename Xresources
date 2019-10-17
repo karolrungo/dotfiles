@@ -17,6 +17,7 @@ URxvt.cursorUnderline: 0
 
 ! FONT
 URxvt*font: xft:DejaVu Sans Mono For Powerline:size=12
+XTerm.vt100.faceName: xft:DejaVu Sans Mono For Powerline:size=12
 URxvt*letterSpace: 0
 
 URxvt.transparent:   false
