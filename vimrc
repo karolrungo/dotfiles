@@ -15,6 +15,9 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-fugitive' "git commands
 Plugin 'airblade/vim-gitgutter' "shows git hunks
 Plugin 'scrooloose/nerdtree'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-misc' "vim-session dependency
@@ -46,7 +49,6 @@ Plugin 'prettier/vim-prettier'
 Plugin 'a.vim' "switch between source and header files
 Plugin 'rhysd/vim-clang-format'
 Plugin 'gustafj/vim-ttcn'
-Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -118,9 +120,10 @@ set number
 set modifiable
 set autoread
 
-set cmdheight=2
-set shortmess+=c
-set signcolumn=yes
+" set cmdheight=2
+" set shortmess+=c
+" set signcolumn=yes
+set updatetime=300
 
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -173,6 +176,8 @@ nmap [g :GitGutterPrevHunk<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
+let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeGitStatusWithFlags = 1
 let NERDTreeShowHidden=1
 
 "vim-session configuration
@@ -196,6 +201,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['tslint', 'prettier', 'eslint'],
 \}
 let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
@@ -283,3 +289,23 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
