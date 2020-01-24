@@ -22,7 +22,7 @@ Plugin 'xolox/vim-session'
 Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags' "search tool
 Plugin 'mhinz/vim-startify' "welcome screen
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
 Plugin 'w0rp/ale'
@@ -92,6 +92,7 @@ set incsearch       " show search matches as you type
 set history=1000    " remember more commands and search history
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set nobackup        " do not keep backup files
+set nowritebackup
 set noswapfile      " do not keep swp files
 set list            " show whitespaces
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -116,6 +117,10 @@ nmap <Space> za
 set number
 set modifiable
 set autoread
+
+set cmdheight=2
+set shortmess+=c
+set signcolumn=yes
 
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -157,16 +162,6 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
-
-" YouCompleteMe configuration
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_confirm_extra_conf = 0
-set completeopt-=preview
-map <silent> gd :YcmCompleter GoToDeclaration<CR>
-map <silent> gf :YcmCompleter GoToDefinition<CR>
-map <C-i> :YcmCompleter FixIt<CR>
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'
@@ -261,3 +256,30 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
