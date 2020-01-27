@@ -28,8 +28,8 @@ Plugin 'mhinz/vim-startify' "welcome screen
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
-Plugin 'w0rp/ale'
-Plugin 'schickling/vim-bufonly' "delete allbuffers except current
+" Plugin 'w0rp/ale'
+" Plugin 'schickling/vim-bufonly' "delete allbuffers except current
 Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
@@ -120,11 +120,6 @@ set number
 set modifiable
 set autoread
 
-" set cmdheight=2
-" set shortmess+=c
-" set signcolumn=yes
-set updatetime=300
-
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -171,8 +166,8 @@ let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
-nmap ]g :GitGutterNextHunk<CR>
-nmap [g :GitGutterPrevHunk<CR>
+" nmap ]g :GitGutterNextHunk<CR>
+" nmap [g :GitGutterPrevHunk<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
@@ -183,6 +178,8 @@ let NERDTreeShowHidden=1
 "vim-session configuration
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
+"temporary fix NERDTree and vimsession bug
+set sessionoptions-=blank
 
 "tagbar configuration
 nmap <F8> :TagbarToggle<CR>
@@ -191,32 +188,6 @@ let g:tagbar_autofocus = 1
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
 
-let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
-let g:ale_linters = {
-\   'javascript': ['stylelint', 'eslint'],
-\   'jsx': ['stylelint', 'eslint'],
-\   'css': ['stylelint'],
-\   'scss': ['stylelint'],
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
-\   'typescript': ['tslint', 'prettier', 'eslint'],
-\}
-let g:ale_linters_explicit = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-nmap ]w :ALENextWrap<CR>
-nmap [w :ALEPreviousWrap<CR>
-nmap <Leader>f <Plug>(ale_fix)
-
-"Ags configuration
 let g:ags_winheight = 10
 
 "blose configuration
@@ -263,6 +234,9 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -289,6 +263,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -301,7 +279,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
