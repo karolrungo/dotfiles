@@ -28,8 +28,7 @@ Plugin 'mhinz/vim-startify' "welcome screen
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine' "shows indents in code
-" Plugin 'w0rp/ale'
-" Plugin 'schickling/vim-bufonly' "delete allbuffers except current
+Plugin 'schickling/vim-bufonly' "delete allbuffers except current
 Plugin 'qpkorr/vim-bufkill' "keep split after buffer close
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
@@ -39,12 +38,10 @@ Plugin 'tpope/vim-repeat'
 Plugin 'terryma/vim-expand-region'
 Plugin 'ludovicchabant/vim-gutentags'
 "WebDev
-Plugin 'Raimondi/delimitMate' "close quotes parentheisis brackets
 Plugin 'alvan/vim-closetag' "close html tags
 Plugin 'Valloric/MatchTagAlways' "match html tags
 Plugin 'mattn/emmet-vim'
 Plugin 'gko/vim-coloresque'
-Plugin 'prettier/vim-prettier'
 "C++
 Plugin 'a.vim' "switch between source and header files
 Plugin 'rhysd/vim-clang-format'
@@ -131,7 +128,6 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-
 "annonymous clipboard
 map <leader>a "_
 
@@ -166,8 +162,6 @@ let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
-" nmap ]g :GitGutterNextHunk<CR>
-" nmap [g :GitGutterPrevHunk<CR>
 
 "NerdTREE configuration
 map <F3> :NERDTreeToggle <CR>
@@ -178,8 +172,6 @@ let NERDTreeShowHidden=1
 "vim-session configuration
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
-"temporary fix NERDTree and vimsession bug
-set sessionoptions-=blank
 
 "tagbar configuration
 nmap <F8> :TagbarToggle<CR>
@@ -188,6 +180,7 @@ let g:tagbar_autofocus = 1
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
 
+"Ags configuration
 let g:ags_winheight = 10
 
 "blose configuration
@@ -234,9 +227,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" set cmdheight=2
+" set shortmess+=c
+" set signcolumn=yes
 set updatetime=300
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -256,16 +250,15 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)``
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -284,6 +277,31 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-tslint',
+  \ 'coc-eslint',
+  \ 'coc-angular',
+  \ 'coc-jest',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-stylelint',
+  \ 'coc-stylelintplus',
+  \ 'coc-emmet',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-yaml',
+  \ 'coc-xml',
+  \ 'coc-pairs',
+  \ 'coc-webpack',
+  \ 'coc-docker',
+  \ 'coc-ccls',
+  \ 'coc-marketplace'
+  \ ]
