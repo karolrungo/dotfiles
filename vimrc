@@ -98,6 +98,10 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set pastetoggle=<F2> " F2 activates paste mode
 set hidden          " unsaved buffers can be not active
 set mouse=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
 set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
