@@ -23,7 +23,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'xolox/vim-misc' "vim-session dependency
 Plugin 'xolox/vim-session'
 Plugin 'majutsushi/tagbar'
-Plugin 'gabesoft/vim-ags' "search tool
+Plugin 'dyng/ctrlsf.vim'
 Plugin 'mhinz/vim-startify' "welcome screen
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'ntpeters/vim-better-whitespace'
@@ -184,8 +184,17 @@ let g:tagbar_autofocus = 1
 "startify configuration
 let g:startify_session_dir = '~/.vim/sessions'
 
-"Ags configuration
-let g:ags_winheight = 10
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>v <Plug>CtrlSFVwordPath
+nmap     <C-F>w <Plug>CtrlSFCwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_regex_pattern = 0
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_winsize = '10'
+let g:ctrlsf_extra_backend_args = {
+    \ 'ag': "--ignore package-lock.json --ignore yarn.lock --ignore node_modules"
+    \ }
 
 "blose configuration
 let bclose_multiple = 0
