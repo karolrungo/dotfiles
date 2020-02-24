@@ -16,7 +16,7 @@ URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 0
 
 ! FONT
-URxvt*font: xft:DejaVu Sans Mono For Powerline:size=12
+URxvt*font: xft:FuraCode Nerd Font Mono:size=10
 XTerm.vt100.faceName: xft:DejaVu Sans Mono For Powerline:size=12
 URxvt*letterSpace: 0
 
