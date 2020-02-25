@@ -17,7 +17,10 @@ URxvt.cursorUnderline: 0
 
 ! FONT
 URxvt*font: xft:FuraCode Nerd Font Mono:size=10
-XTerm.vt100.faceName: xft:DejaVu Sans Mono For Powerline:size=12
+URxvt.boldFont: xft:FuraCode Nerd Font Mono:size=10:bold
+URxvt.italicFont: xft:FuraCode Nerd Font Mono:size=10:italic
+URxvt.boldItalicFont: xft:FuraCode Nerd Font Mono:size=10:bold:italic
+! URxvt.imFont: xft:FuraCode Nerd Font Mono:size=10
 URxvt*letterSpace: 0
 
 URxvt.transparent:   false
@@ -30,7 +33,13 @@ URxvt*fading:  30
 URxvt*saveLines:  100000
 
 ! Perl extensions
-URxvt.perl-ext-common: default,matcher,fullscreen,resize-font
+URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,tabbedex
+
+! FONT-SIZE
+URxvt.keysym.C-Down: resize-font:smaller
+URxvt.keysym.C-Up: resize-font:bigger
+URxvt.keysym.C-equal: resize-font:reset
+URxvt.keysym.C-question: resize-font:show
 
 ! MATCHER
 URxvt.url-launcher: google-chrome-stable
@@ -45,6 +54,11 @@ URxvt.keysym.Control-Meta-v: builtin-string:
 
 ! FULLSCREEN
 URxvt.keysym.F11: perl:fullscreen:switch
+
+! TABBEDEX
+URxvt.tabbed.autohide: true
+URxvt.tabbed.reopen-on-close: yes
+URxvt.tabbed.title: false
 
 ! Stay focused on a particular part of scrollback buffer when scrolled up from the bottom
 URxvt.scrollTtyOutput:   false
