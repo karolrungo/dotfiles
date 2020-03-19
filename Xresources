@@ -16,11 +16,7 @@ URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 0
 
 ! FONT
-URxvt*font: xft:FuraCode Nerd Font Mono:size=10
-URxvt.boldFont: xft:FuraCode Nerd Font Mono:size=10:bold
-URxvt.italicFont: xft:FuraCode Nerd Font Mono:size=10:italic
-URxvt.boldItalicFont: xft:FuraCode Nerd Font Mono:size=10:bold:italic
-! URxvt.imFont: xft:FuraCode Nerd Font Mono:size=10
+URxvt*font: xft:FuraCode Nerd Font Mono:size=10,xft:DejaVuSansMono Nerd Font:size=10
 URxvt*letterSpace: 0
 
 URxvt.transparent:   false
