@@ -3,7 +3,14 @@
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-#
+
+
+# don't show window title
+for_window [class="^.*"] border pixel 0
+new_window 1pixel
+smart_gaps on
+gaps outer 15
+gaps inner 15
 
 # i3 config file (v4)
 #
@@ -239,8 +246,5 @@ client.focused          $blue $blue $darkgray $purple $darkgray
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
-#don't show window title
-for_window [class="^.*"] border pixel 1
-new_window 1pixel
 #end of window title bars & borders section
 
