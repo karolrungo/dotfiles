@@ -8,9 +8,9 @@
 # don't show window title
 for_window [class="^.*"] border pixel 0
 new_window 1pixel
-smart_gaps on
-gaps outer 15
-gaps inner 15
+# smart_gaps on
+gaps outer 5
+gaps inner 5
 
 # i3 config file (v4)
 #
@@ -184,7 +184,7 @@ bindsym $mod+F8 exec --no-startup-id pactl set-source-mute 1 toggle
 # exec --no-startup-id compton;
 exec --no-startup-id nitrogen --restore; sleep 1;
 exec --no-startup-id dunst
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 set $Locker betterlockscreen -l dim && sleep 1
 
@@ -220,22 +220,22 @@ set $gray #a89984
 set $darkgray #1d2021
 
 #start of bar section
-bar {
-    position top
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
+# bar {
+    # position top
+    # status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    # colors {
+        # # bar background color
+        # background $bg
+        # # text color used for blocks that do not have a color specified.
+        # statusline $yellow
+        # # workspaces section
+        # #                    border  backgr. text
+        # focused_workspace    $aqua $aqua $darkgray
+        # inactive_workspace   $darkgray $darkgray $yellow
+        # active_workspace     $darkgray $darkgray $yellow
+        # urgent_workspace     $red $red $bg
+    # }
+# }
 #end of bar section
 
 #start of window title bars & borders section
