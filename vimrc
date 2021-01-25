@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'joshdick/onedark.vim'
+Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-fugitive' "git commands
 Plug 'airblade/vim-gitgutter' "shows git hunks
 Plug 'scrooloose/nerdtree'
@@ -49,8 +50,6 @@ Plug 'gustafj/vim-ttcn'
 
 Plug 'unblevable/quick-scope'
 
-
-
 call plug#end()            " required
 
 let mapleader = ','
@@ -59,8 +58,10 @@ syntax enable
 set t_Co=256
 " colorscheme gruvbox
 " set background=dark
-colorscheme onedark
+" colorscheme onedark
 highlight Normal ctermbg=None
+
+colorscheme codedark
 
 set encoding=utf8
 set fileencoding=utf-8
@@ -131,7 +132,7 @@ nmap ; :Buffers<CR>
 nmap <Leader>t :GFiles<CR>
 
 "git-airline configuration
-let g:airline_theme="onedark"
+let g:airline_theme="codedark"
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline_powerline_fonts=1
