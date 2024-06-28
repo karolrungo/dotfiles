@@ -1,5 +1,3 @@
-require("core.options")
-require("core.keymaps")
-require("core.colorscheme")
-require("plugins-setup")
-require("plugins")
+require("josean.core")
+require("josean.lazy")
+
