@@ -84,9 +84,9 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			["tsserver"] = function()
+			["tsp_server"] = function()
 				-- configure emmet language server
-				lspconfig["tsserver"].setup({
+				lspconfig["tsp_server"].setup({
 					capabilities = capabilities,
 					filetypes = { "typescript", "javascript" },
 				})
