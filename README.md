@@ -9,16 +9,10 @@ dotfiles/
   config/
     common/        # stowed on macOS and Linux
       .config/
-        bat, btop, htop, kitty, nvim, ranger, wallpapers
-        starship.toml
-      .tmux.conf
-      .vimrc
+        <packages common for MacOS and Linux>
     linux/         # stowed on Linux only
       .config/
-        autorandr, conky, dunstrc, i3, picom, polybar, rofi
-      .xinitrc
-      .Xresources
-      .xlock/
+        <Linux specific packages>
   install.sh
 ```
 
