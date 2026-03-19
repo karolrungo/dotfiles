@@ -9,7 +9,7 @@ dotfiles/
   config/
     common/        # stowed on macOS and Linux
       .config/
-        bat, btop, htop, kitty, nvim_josean, ranger, wallpapers
+        bat, btop, htop, kitty, nvim, ranger, wallpapers
         starship.toml
       .tmux.conf
       .vimrc
