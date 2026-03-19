@@ -33,8 +33,10 @@ dotfiles/
 
 ```zsh
 ./install.sh            # apply symlinks
-./install.sh -n         # dry run — preview what would be linked without touching anything
-./install.sh -h         # show help
+./install.sh -n         # dry run (short flag)
+./install.sh --dry-run  # dry run (long flag)
+./install.sh -h         # show help (short flag)
+./install.sh --help     # show help (long flag)
 ```
 
 On macOS only `common` is stowed. On Linux both `common` and `linux` are stowed.
