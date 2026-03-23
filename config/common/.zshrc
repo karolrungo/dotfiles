@@ -117,7 +117,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export JAVA_HOME="/Users/karrungo/Library/Java/JavaVirtualMachines/liberica-1.8.0_352"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf key bindings and fuzzy completion
+if command -v fzf &>/dev/null; then
+  export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/fzfrc"
+  [[ -f "$HOME/.config/fzf/ctrl-t.sh" ]] && source "$HOME/.config/fzf/ctrl-t.sh"
+  source <(fzf --zsh)
+fi
 
 alias python=/usr/bin/python3
 
