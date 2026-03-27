@@ -1,0 +1,49 @@
+# Package lists for Ansible
+# Edit these lists to customize your setup
+
+# Packages with identical names on macOS (Homebrew) and Arch (pacman)
+common_packages:
+  - bat
+  - btop
+  - eza
+  - fastfetch
+  - fd
+  - fzf
+  - gh
+  - git
+  - htop
+  - jq
+  - kitty
+  - neovim
+  - openssh
+  - ripgrep
+  - starship
+  - stow
+  - tmux
+  - yazi
+  - zoxide
+  - zsh
+
+# macOS only (Homebrew)
+macos_packages:
+  - coreutils
+  - gnu-sed
+  - grpcurl
+  - k9s
+  - kubectx
+  - libpq
+  - sshuttle
+
+# macOS casks (GUI applications)
+macos_casks:
+  - cursor
+  - dbeaver-community
+  - docker-desktop
+  # - adobe-acrobat-reader
+  # - gcloud-cli
+  # - postman
+  # - spotify
+
+# Arch Linux only (pacman/yay)
+arch_packages:
+  - base-devel

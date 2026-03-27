@@ -1,0 +1,47 @@
+---
+- name: Setup development environment
+  hosts: localhost
+  connection: local
+
+  vars_files:
+    - vars/packages.yml
+
+  tasks:
+    # --- macOS (Homebrew) ---
+    - name: Install Homebrew packages (macOS)
+      homebrew:
+        name: "{{ common_packages + macos_packages }}"
+        state: present
+      register: brew_result
+      when: ansible_facts['os_family'] == "Darwin"
+
+    - name: Show installed/changed Homebrew packages
+      debug:
+        msg: "Changed: {{ brew_result.changed_pkgs | default([]) }}, Unchanged: {{ brew_result.unchanged_pkgs | default([]) }}"
+      when: ansible_facts['os_family'] == "Darwin" and brew_result is defined
+
+    - name: Install Homebrew casks (macOS)
+      homebrew_cask:
+        name: "{{ macos_casks }}"
+        state: present
+      register: cask_result
+      when: ansible_facts['os_family'] == "Darwin" and macos_casks | length > 0
+
+    - name: Show installed/changed casks
+      debug:
+        msg: "{{ cask_result.msg | default('No changes') }}"
+      when: ansible_facts['os_family'] == "Darwin" and cask_result is defined
+
+    # --- Arch Linux (pacman) ---
+    - name: Install packages (Arch)
+      pacman:
+        name: "{{ common_packages + arch_packages }}"
+        state: present
+      register: pacman_result
+      become: yes
+      when: ansible_facts['os_family'] == "Archlinux"
+
+    - name: Show installed/changed packages (Arch)
+      debug:
+        var: pacman_result.packages
+      when: ansible_facts['os_family'] == "Archlinux" and pacman_result is defined
