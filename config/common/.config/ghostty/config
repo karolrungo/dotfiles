@@ -1,0 +1,37 @@
+# Ghostty config mirroring ~/.config/kitty/kitty.conf
+
+# Theme: catppuccin/ghostty macchiato, installed in themes/ alongside this file.
+theme = catppuccin-macchiato.conf
+
+# Match the Catppuccin kitty theme exactly where it differs from the Ghostty one.
+selection-background = f4dbd6
+selection-foreground = 24273a
+cursor-text = 24273a
+palette = 7=#b8c0e0
+palette = 15=#a5adcb
+
+# Font. Bold/italic/bold-italic variants are used automatically, and synthesised
+# when the family has none, so kitty's bold_font/italic_font toggles need no
+# equivalent here.
+font-family = Fira Mono
+font-size = 14
+adjust-cell-height = 0
+
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
+
+background-opacity = 1
+
+# Ghostty measures scrollback in bytes rather than lines; 10 MB comfortably
+# exceeds kitty's 10000 lines.
+scrollback-limit = 10000000
+
+# kitty: enable_audio_bell no, bell_on_tab no. Dock bouncing when unfocused
+# (attention) stays on, matching kitty's window_alert_on_bell default.
+bell-features = no-system,no-audio,no-title
+
+copy-on-select = clipboard
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
