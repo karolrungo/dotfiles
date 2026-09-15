@@ -169,6 +169,7 @@ alias gcam='git commit --all --message'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv export zsh)"
 
 #hashme
 alias hashme="/Users/karrungo/Citrus/hashme/cmd/cli/bin/hashme"
